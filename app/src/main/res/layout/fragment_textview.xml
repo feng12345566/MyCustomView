@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="滚动的文字"
+            android:textColor="@android:color/holo_green_light"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:singleLine="true"
+            android:text="大量学生反映，除了上课学习英语、课下复习和作业以外，许多家长都为孩子报名了英语补习班。课外补习占据了学生原本就有限的课外活动、休闲娱乐时间，不仅使学生感到负担沉重，甚至也影响了睡眠和休息。上海儿童发展研究中心的调查显示,只有17.2%的小学生、19.1%的初中生达到了标准的睡眠时间;来自深圳的调查显示,超过42%的深圳中小学生处于睡眠不足的状态。" />
+
+        <thereisnospon.codeview.CodeView
+            android:id="@+id/codeview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"></thereisnospon.codeview.CodeView>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:autoLink="web"
+            android:text="以上textview实现了文字的水平滚动，但前提是该textview需获得焦点，当其失去焦点时会停止滚动。那么，如何实现与焦点无关的滚动文字呢？以下通过MarqueeView库实现，github地址：\nhttps://github.com/dalong982242260/AndroidMarqueeView"
+            android:textStyle="bold" />
+
+        <com.dalong.marqueeview.MarqueeView
+            android:id="@+id/mMarqueeView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:direction="left"
+            app:isRepeat="true"
+            app:speed="60"
+            app:startPoint="start"
+            app:textSize="16sp"
+            app:textcolor="@color/colorAccent" />
+
+        <thereisnospon.codeview.CodeView
+            android:id="@+id/codeview2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"></thereisnospon.codeview.CodeView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="多处响应的文字"
+            android:textColor="@android:color/holo_green_light"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>

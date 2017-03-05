@@ -1,5 +1,6 @@
 package com.fyc.admin.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -63,6 +64,7 @@ public class LastOpenSourceFragment extends Fragment implements SwipeRefreshLayo
         dataArray = new JSONArray();
         adapter = new ProjectAdapter(getActivity(), dataArray);
         swipeRefresh.setAdapter(adapter);
+        swipeRefresh.getSwipeRefreshLayout().setColorSchemeResources(android.R.color.holo_blue_light, android.R.color.holo_red_light, android.R.color.holo_orange_light, android.R.color.holo_green_light);
         swipeRefresh.setRefreshing(true);
         return view;
     }
@@ -95,21 +97,28 @@ public class LastOpenSourceFragment extends Fragment implements SwipeRefreshLayo
                         }
                         dataArray.addAll(jsonArray);
                         adapter.setJsonArray(dataArray);
-
+                        if (isRefresh) {
+                            swipeRefresh.setRefreshing(false);
+                        } else {
+                            swipeRefresh.setLoading(false);
+                        }
+                        isRefresh = false;
+                    } else {
+                        day++;
+                        getData();
                     }
 
                 }
+
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
                 if (isRefresh) {
                     swipeRefresh.setRefreshing(false);
                 } else {
                     swipeRefresh.setLoading(false);
                 }
-                isRefresh = false;
-            }
-
-            @Override
-            public void onError(Throwable ex, boolean isOnCallback) {
-
             }
 
             @Override

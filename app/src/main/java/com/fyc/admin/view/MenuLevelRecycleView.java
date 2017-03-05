@@ -50,6 +50,7 @@ public class MenuLevelRecycleView extends RecyclerView {
         this.setAdapter(adapter);
     }
 
+
     public void setMenuList(ArrayList<String> menuList) {
         this.menuList = menuList;
         adapter.notifyDataSetChanged();

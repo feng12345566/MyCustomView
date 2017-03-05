@@ -21,6 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".WebViewActivity" />
+        <activity android:name=".MenuDetailListActivity" />
+        <activity android:name=".WidgetActivity" />
     </application>
 
 </manifest>

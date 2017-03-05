@@ -7,10 +7,13 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.fyc.admin.adapter.MyFragmentAdapter;
 import com.fyc.admin.fragment.HotOpenSourceFragment;
@@ -32,6 +35,12 @@ public class MainActivity extends AppCompatActivity {
     @InjectView(R.id.main_content)
     CoordinatorLayout mainContent;
 
+    @InjectView(R.id.dl_left)
+    DrawerLayout mDrawerLayout;
+
+
+    private ActionBarDrawerToggle mDrawerToggle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,13 +49,29 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("知识库");
         setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //创建返回键，并实现打开关/闭监听
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open, R.string.close) {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+        };
+        mDrawerToggle.syncState();
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
         Fragment[] fragments = new Fragment[4];
         fragments[0] = new LastOpenSourceFragment();
         fragments[1] = new NewBlogFragment();
         fragments[2] = new HotOpenSourceFragment();
         fragments[3] = new MyViewFragment();
         MyFragmentAdapter adapter = new MyFragmentAdapter(getSupportFragmentManager(), fragments,
-                new String[]{"最新项目", "最新博客", "热门框架", "自定义组件"});
+                new String[]{"最新项目", "最新博客", "热门框架", "程序开发"});
         mainViewPager.setAdapter(adapter);
         tabs.setSelectedTabIndicatorColor(Color.parseColor("#EE9A00"));
         tabs.setTabMode(TabLayout.MODE_FIXED);

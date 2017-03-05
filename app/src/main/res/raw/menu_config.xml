@@ -1,0 +1,8 @@
+<xml>
+    <group name="丰富系统组件">
+        <item
+            name="TextView"
+            type="page"
+            url="com.fyc.admin.fragment.TextViewFragment" />
+    </group>
+</xml>

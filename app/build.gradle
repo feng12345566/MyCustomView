@@ -30,4 +30,8 @@ dependencies {
     compile 'org.xutils:xutils:3.3.42'
     compile 'com.mylhyl:commonrefreshlayout:2.0'
     compile 'com.alibaba:fastjson:1.2.24'
+    compile project(path: ':multiActionTextView')
+    compile 'thereisnospon.codeview:codeview:0.3.1'
+    compile 'com.dalong:marqueeview:1.0.1'
+    compile 'com.getbase:floatingactionbutton:1.10.1'
 }
