@@ -114,10 +114,12 @@ public class LastOpenSourceFragment extends Fragment implements SwipeRefreshLayo
 
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
-                if (isRefresh) {
-                    swipeRefresh.setRefreshing(false);
-                } else {
-                    swipeRefresh.setLoading(false);
+                if (swipeRefresh != null) {
+                    if (isRefresh) {
+                        swipeRefresh.setRefreshing(false);
+                    } else {
+                        swipeRefresh.setLoading(false);
+                    }
                 }
             }
 

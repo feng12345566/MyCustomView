@@ -34,4 +34,5 @@ dependencies {
     compile 'thereisnospon.codeview:codeview:0.3.1'
     compile 'com.dalong:marqueeview:1.0.1'
     compile 'com.getbase:floatingactionbutton:1.10.1'
+    compile 'com.github.castorflex.smoothprogressbar:library-circular:1.2.0'
 }

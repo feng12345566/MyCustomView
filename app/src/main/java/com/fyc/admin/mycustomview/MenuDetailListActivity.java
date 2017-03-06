@@ -92,7 +92,7 @@ public class MenuDetailListActivity extends AppCompatActivity {
                 menuDetails.add(new MenuDetail("ListView", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
                 break;
             case 1:
-                menuDetails.add(new MenuDetail("仪表盘", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
+                menuDetails.add(new MenuDetail("仪表盘", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.view.DashboardViewFragment"));
                 menuDetails.add(new MenuDetail("进度条", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
                 menuDetails.add(new MenuDetail("日历", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
                 menuDetails.add(new MenuDetail("通讯录", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
