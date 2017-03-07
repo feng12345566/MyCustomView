@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/DroidPlugin" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/multiActionTextView" />
+            <option value="$PROJECT_DIR$/taglibrary" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

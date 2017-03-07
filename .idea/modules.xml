@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/MyCustomView.iml" filepath="$PROJECT_DIR$/MyCustomView.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/multiActionTextView/multiActionTextView.iml" filepath="$PROJECT_DIR$/multiActionTextView/multiActionTextView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/taglibrary/taglibrary.iml" filepath="$PROJECT_DIR$/taglibrary/taglibrary.iml" />
     </modules>
   </component>
 </project>

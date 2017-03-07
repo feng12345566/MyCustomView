@@ -51,26 +51,42 @@
         android:background="#fff"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:background="#44BBA3">
+            android:layout_height="180dp"
+            android:background="#44BBA3"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
             <ImageView
+                android:id="@+id/user_head"
                 android:layout_width="60dp"
-                android:layout_height="60dp" />
-        </RelativeLayout>
+                android:layout_height="60dp"
+                android:layout_marginLeft="16dp" />
+
+            <TextView
+                android:id="@+id/user_nicknme"
+                android:layout_toRightOf="@id/user_head"
+                android:text="无名小卒"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:layout_marginLeft="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginLeft="24dp"
             android:gravity="center_vertical">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_action_favorite" />
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/heart" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -82,6 +98,40 @@
                 android:textSize="16sp"
                 android:text="我的收藏" />
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="24dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/blog" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="16dp"
+                android:textSize="16sp"
+                android:text="我的博客" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@android:color/darker_gray" />
     </LinearLayout>
 </android.support.v4.widget.DrawerLayout>
 

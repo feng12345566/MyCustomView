@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/conmment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <include layout="@layout/layout_popcomment" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:layout_above="@id/conmment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="点击可@他" />
+
+            <me.kaede.tagview.TagView
+                android:id="@+id/tagview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:lineMargin="5dp"
+                app:tagMargin="3dp"
+                app:textPaddingBottom="3dp"
+                app:textPaddingLeft="10dp"
+                app:textPaddingRight="10dp"
+                app:textPaddingTop="3dp"></me.kaede.tagview.TagView>
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>

@@ -1,6 +1,8 @@
 package com.fyc.admin.mycustomview;
 
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -14,12 +16,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.fyc.admin.adapter.MyFragmentAdapter;
 import com.fyc.admin.fragment.HotOpenSourceFragment;
 import com.fyc.admin.fragment.LastOpenSourceFragment;
 import com.fyc.admin.fragment.MyViewFragment;
 import com.fyc.admin.fragment.NewBlogFragment;
+import com.fyc.admin.utils.common.SizeUtil;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -37,9 +46,18 @@ public class MainActivity extends AppCompatActivity {
 
     @InjectView(R.id.dl_left)
     DrawerLayout mDrawerLayout;
+    @InjectView(R.id.user_head)
+    ImageView userHead;
+    @InjectView(R.id.user_nicknme)
+    TextView userNicknme;
 
 
     private ActionBarDrawerToggle mDrawerToggle;
+
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,11 +91,23 @@ public class MainActivity extends AppCompatActivity {
         MyFragmentAdapter adapter = new MyFragmentAdapter(getSupportFragmentManager(), fragments,
                 new String[]{"最新项目", "最新博客", "热门框架", "程序开发"});
         mainViewPager.setAdapter(adapter);
+        mainViewPager.setOffscreenPageLimit(4);
         tabs.setSelectedTabIndicatorColor(Color.parseColor("#EE9A00"));
         tabs.setTabMode(TabLayout.MODE_FIXED);
         tabs.setTabTextColors(Color.parseColor("#F0F0F0"), Color.parseColor("#EE9A00"));
         tabs.setupWithViewPager(mainViewPager);
-
+        DisplayImageOptions options = new DisplayImageOptions.Builder()
+                .showImageOnLoading(R.mipmap.ic_launcher) // resource or drawable
+                .showImageForEmptyUri(R.mipmap.ic_launcher) // resource or drawable
+                .showImageOnFail(R.mipmap.ic_launcher) // resource or drawable
+                .cacheOnDisk(true)
+                .cacheInMemory(true)
+                .considerExifParams(true)
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .imageScaleType(ImageScaleType.IN_SAMPLE_INT)
+                .displayer(new RoundedBitmapDisplayer(6000))
+                .build();
+        ImageLoader.getInstance().displayImage("http://", userHead, options);
 
     }
 
@@ -93,4 +123,6 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
+
 }

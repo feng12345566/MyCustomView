@@ -1,2 +1,2 @@
-include ':app', ':DroidPlugin'
+include ':app', ':DroidPlugin', ':taglibrary'
 include ':multiActionTextView'
