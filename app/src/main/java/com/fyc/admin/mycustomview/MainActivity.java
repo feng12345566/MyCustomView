@@ -3,7 +3,6 @@ package com.fyc.admin.mycustomview;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -25,7 +24,6 @@ import com.fyc.admin.fragment.HotOpenSourceFragment;
 import com.fyc.admin.fragment.LastOpenSourceFragment;
 import com.fyc.admin.fragment.MyViewFragment;
 import com.fyc.admin.fragment.NewBlogFragment;
-import com.fyc.admin.utils.common.SizeUtil;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
@@ -47,10 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
     @InjectView(R.id.dl_left)
     DrawerLayout mDrawerLayout;
-    @InjectView(R.id.user_head)
-    ImageView userHead;
-    @InjectView(R.id.user_nicknme)
-    TextView userNicknme;
+    @InjectView(R.id.search_view)
+    com.miguelcatalan.materialsearchview.MaterialSearchView searchView;
 
 
     private ActionBarDrawerToggle mDrawerToggle;
@@ -97,26 +93,6 @@ public class MainActivity extends AppCompatActivity {
         tabs.setTabMode(TabLayout.MODE_FIXED);
         tabs.setTabTextColors(Color.parseColor("#F0F0F0"), Color.parseColor("#EE9A00"));
         tabs.setupWithViewPager(mainViewPager);
-        DisplayImageOptions options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.mipmap.web_code) // resource or drawable
-                .showImageForEmptyUri(R.mipmap.web_code) // resource or drawable
-                .showImageOnFail(R.mipmap.web_code) // resource or drawable
-                .cacheOnDisk(true)
-                .cacheInMemory(true)
-                .considerExifParams(true)
-                .bitmapConfig(Bitmap.Config.RGB_565)
-                .imageScaleType(ImageScaleType.IN_SAMPLE_INT)
-                .displayer(new RoundedBitmapDisplayer(200))
-                .build();
-        ImageLoader.getInstance().displayImage("", userHead, options);
-        userHead.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mDrawerLayout.closeDrawers();
-                Intent intent = new Intent(MainActivity.this, MyInfoActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
 
@@ -129,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuItem item = menu.findItem(R.id.action_search);
+        searchView.setMenuItem(item);
         return super.onCreateOptionsMenu(menu);
     }
 

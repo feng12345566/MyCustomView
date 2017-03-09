@@ -21,6 +21,7 @@
                 android:background="?attr/colorPrimary"
                 app:layout_scrollFlags="scroll|enterAlways" />
 
+
             <android.support.design.widget.TabLayout
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
@@ -41,6 +42,11 @@
 
         </android.support.v4.view.ViewPager>
 
+        <com.miguelcatalan.materialsearchview.MaterialSearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
 
     </android.support.design.widget.CoordinatorLayout>
     <!--侧滑菜单-->
@@ -54,33 +60,35 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:background="#44BBA3"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
-
-            <ImageView
-                android:id="@+id/user_head"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="16dp" />
+            android:background="@mipmap/bg_drawer"
+            android:gravity="right|bottom"
+            android:orientation="vertical"
+            android:paddingRight="30dp"
+            android:paddingBottom="16dp">
 
             <TextView
-                android:id="@+id/user_nicknme"
-                android:layout_toRightOf="@id/user_head"
-                android:text="无名小卒"
-                android:textColor="#ffffff"
-                android:textSize="20sp"
-                android:layout_marginLeft="8dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="android知识库"
+                android:textColor="@android:color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="分享ANDROID知识"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginLeft="24dp"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="24dp"
@@ -95,8 +103,8 @@
                 android:paddingLeft="24dp"
                 android:paddingRight="8dp"
                 android:paddingTop="16dp"
-                android:textSize="16sp"
-                android:text="收藏" />
+                android:text="收藏"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <View
@@ -107,9 +115,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginLeft="24dp"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="24dp"
@@ -124,8 +132,8 @@
                 android:paddingLeft="24dp"
                 android:paddingRight="8dp"
                 android:paddingTop="16dp"
-                android:textSize="16sp"
-                android:text="博客" />
+                android:text="博客"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <View
@@ -137,9 +145,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginLeft="24dp"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="24dp"
@@ -154,8 +162,8 @@
                 android:paddingLeft="24dp"
                 android:paddingRight="8dp"
                 android:paddingTop="16dp"
-                android:textSize="16sp"
-                android:text="设置" />
+                android:text="设置"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <View
@@ -166,9 +174,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginLeft="24dp"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="24dp"
@@ -183,8 +191,8 @@
                 android:paddingLeft="24dp"
                 android:paddingRight="8dp"
                 android:paddingTop="16dp"
-                android:textSize="16sp"
-                android:text="关于" />
+                android:text="关于"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <View

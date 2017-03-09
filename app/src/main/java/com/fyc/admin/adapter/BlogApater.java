@@ -10,7 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.alibaba.fastjson.JSON;
 import com.fyc.admin.bean.Blog;
+import com.fyc.admin.bean.UrlCollection;
 import com.fyc.admin.mycustomview.R;
 import com.fyc.admin.mycustomview.WebViewActivity;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -63,13 +66,16 @@ public class BlogApater extends RecyclerView.Adapter<BlogApater.ViewHolder> {
         if (holder.pic != null && !TextUtils.isEmpty(blogs.get(position).getArt_pic())) {
             ImageLoader.getInstance().displayImage(blog.getArt_pic(), holder.pic);
         }
-        holder.blogContainer.setTag(blog.getArt_url());
+        holder.blogContainer.setTag(blog);
         holder.blogContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = (String) v.getTag();
+                Blog blog1 = (Blog) v.getTag();
                 Intent intent = new Intent(context, WebViewActivity.class);
-                intent.putExtra("url", url);
+                intent.putExtra("url", blog1.getArt_url());
+                UrlCollection urlCollection = new UrlCollection();
+                urlCollection.fromBlog(blog1);
+                intent.putExtra("urlCollection", JSON.toJSONString(urlCollection));
                 context.startActivity(intent);
             }
         });

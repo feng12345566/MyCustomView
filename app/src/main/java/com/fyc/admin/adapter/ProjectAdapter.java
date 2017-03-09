@@ -9,9 +9,11 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
+import com.fyc.admin.bean.UrlCollection;
 import com.fyc.admin.mycustomview.R;
 import com.fyc.admin.mycustomview.WebViewActivity;
 
@@ -58,6 +60,12 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
                 public void onClick(View view) {
                     Intent intent = new Intent(context, WebViewActivity.class);
                     intent.putExtra("url", object.getString("source"));
+                    UrlCollection urlCollection = new UrlCollection();
+                    urlCollection.setTitle(object.getString("name"));
+                    urlCollection.setDesc(object.getString("description"));
+                    urlCollection.setUrl(object.getString("source"));
+                    urlCollection.setImg("");
+                    intent.putExtra("urlCollection", JSON.toJSONString(urlCollection));
                     context.startActivity(intent);
                 }
             });
