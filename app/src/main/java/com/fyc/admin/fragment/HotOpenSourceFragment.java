@@ -19,6 +19,7 @@ import com.fyc.admin.bean.HotProject;
 import com.fyc.admin.bean.HotProjectGroup;
 import com.fyc.admin.mycustomview.R;
 import com.fyc.admin.mycustomview.WebViewActivity;
+import com.spreada.utils.chinese.ZHConverter;
 
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
@@ -34,6 +35,7 @@ import java.util.List;
 public class HotOpenSourceFragment extends Fragment {
     private FloatingGroupExpandableListView myList;
     private List<HotProjectGroup> hotProjectGroups;
+    private ZHConverter zhConverter = ZHConverter.getInstance(ZHConverter.SIMPLIFIED);
 
     @Nullable
     @Override
@@ -72,7 +74,7 @@ public class HotOpenSourceFragment extends Fragment {
                         for (int j = 0; j < projects.size(); j++) {
                             JSONObject prj = projects.getJSONObject(j);
                             HotProject hotPrj = new HotProject();
-                            hotPrj.setDesc(prj.getString("descb"));
+                            hotPrj.setDesc(zhConverter.convert(prj.getString("descb")));
                             hotPrj.setGifUrl(prj.getString("gif_url"));
                             hotPrj.setGitUrl(prj.getString("git_url"));
                             hotPrj.setTitle(prj.getString("title"));

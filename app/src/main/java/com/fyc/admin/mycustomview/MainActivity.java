@@ -1,5 +1,6 @@
 package com.fyc.admin.mycustomview;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
@@ -97,18 +98,25 @@ public class MainActivity extends AppCompatActivity {
         tabs.setTabTextColors(Color.parseColor("#F0F0F0"), Color.parseColor("#EE9A00"));
         tabs.setupWithViewPager(mainViewPager);
         DisplayImageOptions options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.mipmap.ic_launcher) // resource or drawable
-                .showImageForEmptyUri(R.mipmap.ic_launcher) // resource or drawable
-                .showImageOnFail(R.mipmap.ic_launcher) // resource or drawable
+                .showImageOnLoading(R.mipmap.web_code) // resource or drawable
+                .showImageForEmptyUri(R.mipmap.web_code) // resource or drawable
+                .showImageOnFail(R.mipmap.web_code) // resource or drawable
                 .cacheOnDisk(true)
                 .cacheInMemory(true)
                 .considerExifParams(true)
                 .bitmapConfig(Bitmap.Config.RGB_565)
                 .imageScaleType(ImageScaleType.IN_SAMPLE_INT)
-                .displayer(new RoundedBitmapDisplayer(6000))
+                .displayer(new RoundedBitmapDisplayer(200))
                 .build();
-        ImageLoader.getInstance().displayImage("http://", userHead, options);
-
+        ImageLoader.getInstance().displayImage("", userHead, options);
+        userHead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDrawerLayout.closeDrawers();
+                Intent intent = new Intent(MainActivity.this, MyInfoActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

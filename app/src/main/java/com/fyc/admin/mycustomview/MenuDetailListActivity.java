@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.fyc.admin.bean.MenuDetail;
 import com.fyc.admin.view.MenuLevelRecycleView;
@@ -57,9 +59,13 @@ public class MenuDetailListActivity extends AppCompatActivity {
                     case MenuDetail.PageType.APK:
                         break;
                     case MenuDetail.PageType.ACTIVITY:
-                        intent1 = new Intent(MenuDetailListActivity.this, WidgetActivity.class);
-                        intent1.putExtra("fragmentName", menuDetail.getUrl());
-                        intent1.putExtra("name", menuDetail.getName());
+                        if (TextUtils.isEmpty(menuDetail.getUrl())) {
+                            Toast.makeText(MenuDetailListActivity.this, "该功能待开发", Toast.LENGTH_SHORT).show();
+                        } else {
+                            intent1 = new Intent(MenuDetailListActivity.this, WidgetActivity.class);
+                            intent1.putExtra("fragmentName", menuDetail.getUrl());
+                            intent1.putExtra("name", menuDetail.getName());
+                        }
                         break;
                 }
                 startActivity(intent1);
@@ -88,55 +94,54 @@ public class MenuDetailListActivity extends AppCompatActivity {
                 menuDetails.add(new MenuDetail("RadioButton", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.RadioButtonFragment"));
                 menuDetails.add(new MenuDetail("ImageView", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.ImageFragment"));
                 menuDetails.add(new MenuDetail("WebView", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("GridView", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("ListView", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
+                menuDetails.add(new MenuDetail("GridView", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.GridViewFragment"));
                 break;
             case 1:
                 menuDetails.add(new MenuDetail("仪表盘", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.view.DashboardViewFragment"));
-                menuDetails.add(new MenuDetail("进度条", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("日历", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("通讯录", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("电子书阅读器", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
+                menuDetails.add(new MenuDetail("进度条", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("日历", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("通讯录", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("电子书阅读器", MenuDetail.PageType.ACTIVITY, null));
                 break;
             case 2:
-                menuDetails.add(new MenuDetail("天气插件", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("新闻资讯插件", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("代办事项插件", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
+                menuDetails.add(new MenuDetail("天气插件", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("新闻资讯插件", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("代办事项插件", MenuDetail.PageType.ACTIVITY, null));
                 break;
             case 3:
-                menuDetails.add(new MenuDetail("音乐播放器", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("视频播放器", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("网络直播", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("短视频", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
+                menuDetails.add(new MenuDetail("音乐播放器", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("视频播放器", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("网络直播", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("短视频", MenuDetail.PageType.ACTIVITY, null));
 
                 break;
             case 4:
-                menuDetails.add(new MenuDetail("辅助服务", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("短信", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("拨号", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("应用管理", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
+                menuDetails.add(new MenuDetail("辅助服务", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("短信", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("拨号", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("应用管理", MenuDetail.PageType.ACTIVITY, null));
                 break;
             case 5:
-                menuDetails.add(new MenuDetail("蓝牙通讯", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("串口通讯", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("WIFI通讯", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("耳机接口通讯", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("网络通讯（文件上传下载）", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("网络通讯（socket）", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
+                menuDetails.add(new MenuDetail("蓝牙通讯", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("串口通讯", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("WIFI通讯", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("耳机接口通讯", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("网络通讯（文件上传下载）", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("网络通讯（socket）", MenuDetail.PageType.ACTIVITY, null));
                 break;
             case 6:
-                menuDetails.add(new MenuDetail("数据库存储", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("文件存储", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("XML解析", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("图片压缩", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
+                menuDetails.add(new MenuDetail("数据库存储", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("文件存储", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("XML解析", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("图片压缩", MenuDetail.PageType.ACTIVITY, null));
                 break;
             case 7:
-                menuDetails.add(new MenuDetail("GPS定位导航", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("加速度传感器", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("方向传感器（指南针）", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("录音", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("语音助手", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
-                menuDetails.add(new MenuDetail("拍照截图", MenuDetail.PageType.ACTIVITY, "com.fyc.admin.fragment.WebViewFragment"));
+                menuDetails.add(new MenuDetail("GPS定位导航", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("加速度传感器", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("方向传感器（指南针）", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("录音", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("语音助手", MenuDetail.PageType.ACTIVITY, null));
+                menuDetails.add(new MenuDetail("拍照截图", MenuDetail.PageType.ACTIVITY, null));
         }
         for (int i = 0; i < menuDetails.size(); i++) {
             list.add(menuDetails.get(i).getName());

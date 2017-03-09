@@ -3,6 +3,7 @@ package com.fyc.admin.mycustomview;
 import android.content.ClipboardManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,11 +12,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebChromeClient;
-import android.webkit.WebResourceRequest;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -38,7 +38,7 @@ public class WebViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_webview);
         ButterKnife.inject(this);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-
+        getWindow().setFormat(PixelFormat.TRANSLUCENT);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -52,14 +52,6 @@ public class WebViewActivity extends AppCompatActivity {
         });
         String url = getIntent().getStringExtra("url");
         mUrl = url;
-        WebSettings setting = webview.getSettings();
-        setting.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-        setting.setUseWideViewPort(true);
-        setting.setBuiltInZoomControls(true);
-        setting.setLoadWithOverviewMode(true);
-        setting.setUseWideViewPort(true);
-        setting.setSupportZoom(true);
-        webview.setInitialScale(10);
         webview.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
@@ -106,7 +98,6 @@ public class WebViewActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         Uri content_url = Uri.parse(mUrl);
         intent.setData(content_url);
-        intent.setClassName("com.android.browser", "com.android.browser.BrowserActivity");
         startActivity(intent);
     }
 

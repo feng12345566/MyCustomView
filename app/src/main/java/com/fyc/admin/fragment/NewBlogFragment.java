@@ -79,6 +79,7 @@ public class NewBlogFragment extends Fragment implements SwipeRefreshLayout.OnRe
         String dayStr = simpleDateFormat.format(new Date());
         String url = "http://www.iygdy.com:13312/app/getNewBlogs/" + URLEncoder.encode(dayStr) + "/" + page;
         RequestParams params = new RequestParams(url);
+        params.setAutoRename(true);
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {

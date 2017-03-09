@@ -37,7 +37,7 @@
                 android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:textColor="@android:color/darker_gray"
                 android:text="2013-11-27 15:13" />
 
             <TextView
@@ -47,6 +47,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="8dp"
                 android:minWidth="12dp"
+                android:textColor="@android:color/darker_gray"
                 android:text="22" />
 
             <ImageView
@@ -64,6 +65,7 @@
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:id="@+id/source"
+                android:textColor="@android:color/darker_gray"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_toLeftOf="@id/linkicon"

@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.fyc.admin.bean.Blog;
 import com.fyc.admin.mycustomview.R;
 import com.fyc.admin.mycustomview.WebViewActivity;
@@ -61,7 +60,7 @@ public class BlogApater extends RecyclerView.Adapter<BlogApater.ViewHolder> {
         holder.linkView.setText(blog.getArt_view() + "");
         holder.time.setText(blog.getArt_time());
         holder.source.setText("来源:" + blog.getArt_source().toUpperCase());
-        if (holder.pic != null) {
+        if (holder.pic != null && !TextUtils.isEmpty(blogs.get(position).getArt_pic())) {
             ImageLoader.getInstance().displayImage(blog.getArt_pic(), holder.pic);
         }
         holder.blogContainer.setTag(blog.getArt_url());
