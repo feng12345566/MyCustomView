@@ -52,9 +52,13 @@ public class MenuDetailListActivity extends AppCompatActivity {
                 MenuDetail menuDetail = menuDetails.get(postion);
                 switch (menuDetail.getPageType()) {
                     case MenuDetail.PageType.LINK:
-                        intent1 = new Intent(MenuDetailListActivity.this, WebViewActivity.class);
-                        intent1.putExtra("url", menuDetail.getUrl());
-                        intent1.putExtra("name", menuDetail.getName());
+                        if (TextUtils.isEmpty(menuDetail.getUrl())) {
+                            Toast.makeText(MenuDetailListActivity.this, "该功能待开发", Toast.LENGTH_SHORT).show();
+                        } else {
+                            intent1 = new Intent(MenuDetailListActivity.this, WebViewActivity.class);
+                            intent1.putExtra("url", menuDetail.getUrl());
+                            intent1.putExtra("name", menuDetail.getName());
+                        }
                         break;
                     case MenuDetail.PageType.APK:
                         break;
@@ -68,7 +72,9 @@ public class MenuDetailListActivity extends AppCompatActivity {
                         }
                         break;
                 }
-                startActivity(intent1);
+                if (intent1 != null) {
+                    startActivity(intent1);
+                }
             }
         });
         toolbar.setTitle(intent.getStringExtra("title"));
